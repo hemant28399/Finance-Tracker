@@ -26,23 +26,36 @@ const AddTransaction = () => {
         <Input type="number" value={amount} onChange={(e) => setAmount(e.target.value)} placeholder="Amount" required />
         <Input type="text" value={category} onChange={(e) => setCategory(e.target.value)} placeholder="Category" required />
         <Input type="date" value={date} onChange={(e) => setDate(e.target.value)} required />
-        <button type="submit">Add Transaction</button>
+        <Button type="submit">Add Transaction</Button>
       </form>
   );
 };
 
-const Input = styled.input`
-  margin: 15px;
-  height: 1.5rem;
+const Button = styled.button`
+  height: 1.7rem;
   border-radius: 2rem;
-  padding-left: 0.6rem;
+  cursor: pointer;
+  margin: 1rem;
+  padding: 0.3rem 0.8rem;
+  background-color: orange;
+  border: 1px solid black;
+`;
+
+const Input = styled.input`
+  margin: 1rem;
+  height: 1.5rem;
+  width: 115px;
+  border-radius: 2rem;
+  padding-left: 0.7rem;
+  padding-right: 0.3rem;
 `;
 
 const Select = styled.select`
   margin: 1.5rem 1.5rem 1.5rem 0;
   height: 1.8rem;
   border-radius: 2rem;
-  padding-left: 0.8rem;
+  padding-left: 0.5rem;
+  border: 2px solid black;
 `;
 
 export default AddTransaction;

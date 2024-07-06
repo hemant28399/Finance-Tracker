@@ -4,6 +4,7 @@ import AddTransaction from './components/AddTransaction';
 import TransactionList from './components/TransactionList';
 import Summary from './components/Summary';
 import CategoryBreakdown from './components/CategoryBreakdown';
+import Loader from './components/Loader';
 import styled from 'styled-components';
 import  TransactionContext   from './components/TransactionContext';
 
@@ -32,12 +33,17 @@ const App = () => {
     <TransactionContext.Provider value={{ transactions, fetchTransactions }}>
       <StyledApp>
         <h1>Personal Finance Tracker</h1>
-        {loading && <p>Loading...</p>}
-        {error && <p>Error: {error}</p>}
-          <AddTransaction fetchTransactions={fetchTransactions} />
-        <TransactionList transactions={transactions} />
-        <Summary transactions={transactions} />
-        <CategoryBreakdown transactions={transactions} />
+        {loading ? (
+          <Loader />
+        ) : (
+          <>
+            {error && <p>Error: {error}</p>}
+            <AddTransaction fetchTransactions={fetchTransactions} />
+            <TransactionList transactions={transactions} />
+            <Summary transactions={transactions} />
+            <CategoryBreakdown transactions={transactions} />
+          </>
+        )}
       </StyledApp>
     </TransactionContext.Provider>
   );
